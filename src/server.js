@@ -1,7 +1,7 @@
 import express from 'express';
 import 'dotenv/config';
 import cors from 'cors';
-import pinoHttp from 'pino-http';
+import { logger } from './middleware/logger.js';
 import { connectMongoDB } from './db/connectMongoDB.js';
 import notesRouter from './routes/notesRoutes.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
@@ -12,9 +12,9 @@ const PORT = process.env.PORT ?? 3030;
 
 app.use(cors());
 app.use(express.json());
-app.use(pinoHttp());
+app.use(logger);
 
-app.use('/notes', notesRouter);
+app.use(notesRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
