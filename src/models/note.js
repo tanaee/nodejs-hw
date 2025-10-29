@@ -10,27 +10,26 @@ const noteSchema = new Schema(
     },
     content: {
       type: String,
-      trim: true,
       default: '',
+      trim: true,
     },
     tag: {
       type: String,
-      enum: [
-        'Work',
-        'Personal',
-        'Meeting',
-        'Shopping',
-        'Ideas',
-        'Travel',
-        'Finance',
-        'Health',
-        'Important',
-        'Todo',
-      ],
+      trim: true,
+      enum: TAGS,
       default: 'Todo',
     },
+
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+    versionKey: false,
+  },
 );
 
 noteSchema.index({

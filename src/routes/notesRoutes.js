@@ -13,8 +13,11 @@ import {
   getAllNotesSchema,
   createNoteSchema,
 } from '../validations/notesValidation.js';
+import { authenticate } from '../middleware/authenticate.js';
 
 const router = express.Router();
+
+router.use(authenticate);
 
 router.get('/notes', getAllNotesSchema, getAllNotes);
 router.get('/notes/:noteId', noteIdSchema, getNoteById);
