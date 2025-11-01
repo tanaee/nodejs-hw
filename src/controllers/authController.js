@@ -105,7 +105,7 @@ export const requestResetEmail = async (req, res, next) => {
       subject: 'Reset your password',
       html,
     };
-    await sendEmail(mailOptions.to, mailOptions.subject, mailOptions.html);
+    await sendEmail(email, 'Reset your password', html);
     res.status(200).json({ message: 'Password reset email sent successfully' });
   } catch (err) {
     next(
