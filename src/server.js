@@ -23,9 +23,6 @@ app.use(authRoutes);
 app.use(notesRouter);
 app.use(userRoutes);
 
-app.use(authRoutes);
-app.use(notesRouter);
-
 app.use(notFoundHandler);
 app.use(errors());
 app.use(errorHandler);
